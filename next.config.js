@@ -8,7 +8,9 @@ const nextConfig = {
   images: {
     domains: [
       "en.wikipedia.org",
-      "upload.wikimedia.org"
+      "upload.wikimedia.org",
+      "res.cloudinary.com",
+      "asset.cloudinary.com"
     ],
   },
 }
