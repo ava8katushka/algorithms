@@ -7,7 +7,7 @@ function Solution ({solution} : {solution? : string}) {
 
 function mapProblems(problems: Problem[]) {
   return problems.map((problem) => (
-    <div className="box">
+    <div className="box" key={problem.name}>
       <a href={problem.link}>{problem.name}</a>
       <Solution solution={problem.solutionLink}/>
     </div>

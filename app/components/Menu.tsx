@@ -7,7 +7,7 @@ function mapTopics(
   chunkSelected : string
 ) {
   return Object.keys(pagesConfig[key].pages).map((chunk) => (
-    <MenuItem
+    <MenuItem key={chunk}
       text={pagesConfig[key].pages[chunk].title}
       link={`/chapter/${key}/${chunk}`}
       isActive={key == chapterSelected && chunk == chunkSelected}
@@ -21,7 +21,7 @@ function mapMenu(chapter : string, chunk : string) {
     const firstChunk = Object.keys(page.pages)[0];
     const link = `/chapter/${key}/${firstChunk}`;
     const active = key == chapter;
-    return (<ul className="menu-list">
+    return (<ul className="menu-list" key="page-menu">
       <li>
         <a href={link} className={active? "has-background-success-light" : ""}>{page.title}</a>
         <ul>
