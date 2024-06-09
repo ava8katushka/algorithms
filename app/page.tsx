@@ -2,6 +2,7 @@ import Image from "next/image";
 import Menu from "./components/Menu";
 
 export default function LandingPage() {
+  const text = "Let`s learn some algorithms, now, shall we?";
   return (
      <div className="columns" key="landing-page">
      <section className="column is-one-quarter">
@@ -15,7 +16,7 @@ export default function LandingPage() {
       alt="Picture of the author"
     />
     <p className="has-text-weight-medium">
-    Let's learn some algorithms, now, shall we?
+    {text}
     </p>
      </section>
    </div>
