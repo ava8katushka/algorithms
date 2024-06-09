@@ -17,9 +17,7 @@ export default function Navigation() {
         <a className="navbar-item">Ava coding</a>
       </div>
       <div className="navbar-end">
-      <a className="navbar-item">
-        </a>
-        <a className="navbar-item">
+        <a className="navbar-item" href="https://github.com/ava8katushka/algorithms">
           <span className="icon-text">
             <span className="icon">
               <FontAwesomeIcon icon={["fab", "github"]} />
