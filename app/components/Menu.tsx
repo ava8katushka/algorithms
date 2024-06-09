@@ -23,7 +23,7 @@ function mapMenu(chapter : string, chunk : string) {
     const active = key == chapter;
     return (<ul className="menu-list" key="page-menu">
       <li>
-        <a href={link} className={active? "is-active" : ""}>{page.title}</a>
+        <a href={link} className={active? "" : ""}>{page.title}</a>
         <ul>
           {active? mapTopics(key, chapter, chunk): ""}
         </ul>
