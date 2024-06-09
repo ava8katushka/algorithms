@@ -3,6 +3,7 @@ import TimeAndSpace from "./time_and_space.mdx";
 import CodeLimit from "./code_limit.mdx";
 import Logarithm from "./logarithm.mdx";
 import UnderConstruction from "./under_constuction.mdx"
+import TimeComplexities from "./time_complexities.mdx"
 
 export const pagesConfig: Chapters = {
   "time_and_space" : {
@@ -28,7 +29,7 @@ export const pagesConfig: Chapters = {
       "logarithm"  : { title: "What is a logarithm?", markdown: <Logarithm />, problems: [] },
       "o_n" : {
         title: "How to make sense of O(1), O(n), O(n log n), O(a^n) and similar",
-        markdown: <UnderConstruction />,
+        markdown: <TimeComplexities />,
         problems: [],
       },
       "static_arrays" : {
