@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function YoutubeShort({ code }: { code: string }) {
+export default function YoutubeClassic({ code }: { code: string }) {
   return (
       <iframe
-        width="360"
-        height="640"
+        width="560"
+        height="315"
         src={`https://www.youtube.com/embed/${code}`}
         title="YouTube video player"
         frameBorder="0"
