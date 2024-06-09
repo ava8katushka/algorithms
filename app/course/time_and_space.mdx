@@ -1,0 +1,45 @@
+# What is time and space complexity, exactly?
+
+Hi. Hello! Very happy to see you here. It's Ava, I'm your Algorithms and Data Structures teacher. And thank you for all of you, who joined the Linkedin Group! I'm really happy to see you here, really happy for us to start. And today we are talking about the Time and Space complexity. 
+
+## What is n? 
+
+So if you ever heard the words thrown around, like "n log n", "O(n)", "exponential", "logarithmic", "O(n^2)" people are talking about either time or space complexity. So first of all, let's make sense of n. What is n people are talking all around about?  When you write your program, you have an input and this input could be an array or a string, or maybe just a number. So the length of this array or a string we would call n. 
+
+## What is time complexity? 
+
+If we are talking about time complexity, we measure, how fast or slow our program runs depending on the length of the input, the n.
+
+# O(1)
+
+So if the best time complexity ever is constant, O(1). It's when the time it takes to run your program is totally independent of the length of your input. Your input could be billions: your program always runs in the same time. 
+
+# O(n)
+
+If your dependency is linear, O(n), if you increase your input 100 times, the time it takes your program to run increases approximately 100 times.
+
+# O(n^2)
+
+What about O(n^2), quadratic time complexity? If your input increases 100 times, your time increases not 100, but 100^2! It's 10,000 times your program would be slower! No wonder people don't like O(n^2) time complexity.
+
+# O(n) = O(5n) = 0(500n) : constants do not matter
+
+Next and when we talk about it, we don't care about the constants, O(n) O(5n), O(500n) is still O(n) In reality it makes a difference. But in computer science we only talk about the relationship. So it's still O(n). 
+
+## What is space complexity?
+
+Space complexity is how much memory your program uses depending on the length of the input. There are 2 main sources of space complexity. You can create space yourself: variables, arrays, matrices, trees, lists, hash tables. If you create an array and put n elements there, you would have O(n), linear space complexity. 
+
+## How much space does recursion take?
+
+The second source of space complexity is slightly more tricky. It is the recursive stack size. So if you call your function recursively, you use this additional space. For example, you call your construction recursively n times, computer would need to remember where to return each time and what arguments the function was using. Obviously, you would need space for it. How much space? How deep your recursive call stack is.  
+
+If you're reading right now and does not make a lot of sense to you, don't worry, we would get into the details and examples a little later. But remember, there are two main sources of space complexity your variables and the stack of recursion. Okay? 
+
+## Teaser for the next time
+
+If you are reading right now, and thinking: "Why do we use all these measures to count time and space? Why do we care about it so much? Computers are so fast. Yeah, it's the fastest computers in the history. Should we even concern ourselves with this?" 
+
+### The next lesson would be exactly for you!
+
+Because I will teach you a trick Olympiad programmers use in their competitions. You would look at a problem and you could predict how much time it would actually take to run! This is super awesome, so don't miss it. I will see you next week.
