@@ -25,7 +25,6 @@ export default function Basic({
   return (
     <section className="hero">
       <div className="hero-body">
-        <h1>{title}</h1>
         <div className="content">
         {markdown}
         </div>
