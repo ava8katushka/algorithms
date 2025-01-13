@@ -15,6 +15,17 @@ Hi. Hello! Very happy to see you here. It's Ava, I'm your Algorithms and Data St
 
 So if you ever heard the words thrown around, like "n log n", "O(n)", "exponential", "logarithmic", "O(n^2)" people are talking about either time or space complexity. So first of all, let's make sense of n. What is n people are talking all around about?  When you write your program, you have an input and this input could be an array or a string, or maybe just a number. So the length of this array or a string we would call n. 
 
+<Code>
+{
+`def multiply(arr): # length of arr is "n"
+    res = 1
+    for a in arr:
+        res *= a
+    return res
+`
+}
+</Code>
+
 ## What is time complexity? 
 
 If we are talking about time complexity, we measure, how fast or slow our program runs depending on the length of the input, the n.
@@ -23,13 +34,40 @@ If we are talking about time complexity, we measure, how fast or slow our progra
 
 So if the best time complexity ever is constant, O(1). It's when the time it takes to run your program is totally independent of the length of your input. Your input could be billions: your program always runs in the same time. 
 
+<Code>
+{
+`a = 0
+b += 1`
+}
+</Code>
+
 # O(n)
 
 If your dependency is linear, O(n), if you increase your input 100 times, the time it takes your program to run increases approximately 100 times.
 
+<Code>
+{
+`array = range(n)
+sum(array)
+positive = [for a in array if a > 0]
+for i in range(len(array)):
+    s *= array[i]
+`
+}
+</Code>
+
 # O(n^2)
 
 What about O(n^2), quadratic time complexity? If your input increases 100 times, your time increases not 100, but 100^2! It's 10,000 times your program would be slower! No wonder people don't like O(n^2) time complexity.
+
+<Code>
+{
+`for i in range(len(matrix)):
+   for j in range(len(matrix[0])):
+      s += matrix[i][j]
+`
+}
+</Code>
 
 # O(n) = O(5n) = 0(500n) : constants do not matter
 
