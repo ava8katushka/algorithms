@@ -1,10 +1,13 @@
 
 import Image from 'next/image'
 import YoutubeClassic from "../components/YoutubeClassic";
+import Code from "../components/Code";
+
 
 <YoutubeClassic code="8ZjgN0POkEo?si=pRSJIv_XUvBRSLiB"/>
 
 # What is time and space complexity, exactly?
+
 
 Hi. Hello! Very happy to see you here. It's Ava, I'm your Algorithms and Data Structures teacher. And thank you for all of you, who joined the Linkedin Group! I'm really happy to see you here, really happy for us to start. And today we are talking about the Time and Space complexity. 
 
@@ -34,7 +37,16 @@ Next and when we talk about it, we don't care about the constants, O(n) O(5n), O
 
 ## What is space complexity?
 
-Space complexity is how much memory your program uses depending on the length of the input. There are 2 main sources of space complexity. You can create space yourself: variables, arrays, matrices, trees, lists, hash tables. If you create an array and put n elements there, you would have O(n), linear space complexity. 
+Space complexity is how much memory your program uses depending on the length of the input. There are 2 main sources of space complexity. First, you can create space yourself: variables, arrays, matrices, trees, lists, hash tables. If you create an array and put n elements there, you would have O(n), linear space complexity. 
+
+<Code>
+{
+`def do_something(arr):
+    a = 5 # constant - O(1) memory
+    new_arr = copy(arr) # linear - O(n) memory`
+}
+</Code>
+
 
 ## How much space does recursion take?
 
