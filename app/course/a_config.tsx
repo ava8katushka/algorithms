@@ -12,14 +12,7 @@ export const pagesConfig: Chapters = {
       about: {
         title: "What is Time and Space Complexity, exactly?",
         markdown: <TimeAndSpace />,
-        problems: [
-          {
-            name: "Link to a problem",
-            link: "ava-coding.com",
-            solutionLink: "ava-coding.com",
-          },
-          { name: "Link to an other problem", link: "ava-coding.com" },
-        ],
+        problems: [],
       },
       code_limit: {
         title: "How to never have a code limit",
