@@ -134,6 +134,34 @@ Imagine summing all the elements in a 2D matrix.
 
 Here, if the matrix size is **n × n**, the total number of iterations is **n × n = n²**.
 
+## O(2ⁿ): Exponential Time Complexity
+
+
+Exponential time complexity means the runtime of your program **doubles**
+ (or grows even faster) with **every additional input element**.
+
+ For **n = 10** you would do **1024** iterations. For **n = 100** it's **1267650600228229401496703205376**!
+
+Exponential algorithms are highly inefficient for large inputs,
+making them impractical except for very small datasets.
+
+**Example 1: The Fibonacci Sequence (Naive Recursion)**
+
+A classic example is calculating the nth Fibonacci number using a naive recursive function.
+The function calls itself twice for each input, resulting in exponential growth:
+
+<Code>
+{
+`def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+`
+}
+</Code>
+
+Here, the number of recursive calls grows exponentially as **2ⁿ**, making it painfully slow for large **n**.
+
 # Constants in Complexity: Why O(5n) = O(n)
 
 When discussing time complexity, constants don’t matter. O(n), O(5n), and O(500n) are all considered O(n) because we care about the **growth rate**, not the exact runtime.
