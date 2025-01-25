@@ -7,39 +7,61 @@ You can read, or you can watch the video:
 
 <YoutubeShort code="8ZjgN0POkEo?si=pRSJIv_XUvBRSLiB"/>
 
-# What is time and space complexity, exactly?
+# Demystifying Time and Space Complexity for Beginners
+
+Hi there! Welcome—I'm so glad you're here.
+My name's Ava, and I’ll be your guide through Algorithms and Data Structures.
+A big thanks to everyone who joined our [Linkedin Group](https://www.linkedin.com/groups/12837112/).
+I’m thrilled we’re starting this journey together!
+
+Today, we’re diving into **time and space** complexity—an essential topic
+for understanding how efficient your programs are.
+Let’s break it down step by step.
 
 
-Hi. Hello! Very happy to see you here.
-It's Ava, I'm your Algorithms and Data Structures teacher.
-And thank you for all of you, who joined the [Linkedin Group](https://www.linkedin.com/groups/12837112/) !
-I'm really happy to see you here, really happy for us to start.
-And today we are talking about the Time and Space complexity. 
+## What is n?  
 
-## What is n? 
+You’ve probably heard terms like “O(n),” “n log n,” or “O(n²)” being tossed around.
+But what does this mysterious n mean?
 
-So if you ever heard the words thrown around, like "n log n", "O(n)", "exponential", "logarithmic", "O(n^2)" people are talking about either time or space complexity. So first of all, let's make sense of n. What is n people are talking all around about?  When you write your program, you have an input and this input could be an array or a string, or maybe just a number. So the length of this array or a string we would call n. 
+When writing programs, **n** usually refers to the **size of the input**. It could be:
 
+- The length of an array or string.
+- The number of elements in a data structure.
+- Any input size your program processes.
+
+For example, if we have a function that multiplies all elements in an array, the size of the array is n:
 <Code>
 {
 
-`# length of arr is "n"
+`# Length of the array is "n"
 def multiply(arr): 
-    res = 1
+    result = 1
     for a in arr:
-        res *= a
-    return res
+        result *= a
+    return result
 `
 }
 </Code>
 
+Here, the time it takes to run the function depends on **n**, the size of the input array.
+
 ## What is time complexity? 
 
-If we are talking about time complexity, we measure, how fast or slow our program runs depending on the length of the input, the n.
+Time complexity measures how the runtime of your program changes
+as the size of the input (n) grows.
+Think of it as a way to estimate efficiency.
+Let’s explore a few common types:
 
-# O(1)
 
-So if the best time complexity ever is constant, O(1). It's when the time it takes to run your program is totally independent of the length of your input. Your input could be billions: your program always runs in the same time. 
+### O(1): Constant Time Complexity
+
+The best-case scenario!
+Here, the runtime is independent of the input size.
+Whether the input has 10 elements or 10 billion,
+ it takes the same amount of time.
+
+Example:
 
 <Code>
 {
@@ -48,65 +70,101 @@ b += 1`
 }
 </Code>
 
-# O(n)
 
-If your dependency is linear, O(n), if you increase your input 100 times, the time it takes your program to run increases approximately 100 times.
+# O(n): Linear Time Complexity
 
+With linear complexity, the runtime grows in **direct proportion** to the input size. If the input size doubles, the runtime roughly doubles.
+
+**Example 1: Summing an Array**
+
+If you’re adding up all elements in an array, your program needs to visit each element one by one. This results in O(n) time complexity:
 <Code>
 {
-`array = range(n)
-sum(array)
-positive = [for a in array if a > 0]
-for i in range(len(array)):
-    s *= array[i]
+`def sum_array(arr):
+    total = 0
+     # Loop runs once for each element in arr
+    for num in arr: 
+        total += num
+    return total
 `
 }
 </Code>
 
-# O(n^2)
+**Example 2: Searching in an Unsorted Array**
 
-What about O(n^2), quadratic time complexity? If your input increases 100 times, your time increases not 100, but 100^2! It's 10,000 times your program would be slower! No wonder people don't like O(n^2) time complexity.
+Suppose you’re searching for a specific value in an unsorted array.
+In the worst case, you’ll have to check every element until you find it
+ (or confirm it’s not there).
 
 <Code>
 {
-`for i in range(len(matrix)):
-   for j in range(len(matrix[0])):
-      s += matrix[i][j]
+`def search(arr, target):
+ # Loop runs n times if the target isn’t found
+    for num in arr:
+        if num == target:
+            return True
+    return False
 `
 }
 </Code>
 
-# O(n) = O(5n) = 0(500n) : constants do not matter
 
-Next and when we talk about it, we don't care about the constants, O(n) O(5n), O(500n) is still O(n) In reality it makes a difference. But in computer science we only talk about the relationship. So it's still O(n). 
+# O(n²): Quadratic Time Complexity
+
+Quadratic complexity arises when your program performs nested operations— for example, when one loop is inside another.
+If the input size increases by **n**, the number of operations increases by **n²**.
+
+**Example: Processing a Matrix**
+
+Imagine summing all the elements in a 2D matrix.
+
+<Code>
+{
+`def sum_matrix(matrix):
+    total = 0
+    # Outer loop runs n times (rows)
+    for i in range(len(matrix)):
+    # Inner loop runs n times (columns)  
+        for j in range(len(matrix[0])):  
+            total += matrix[i][j]
+    return total
+`
+}
+</Code>
+
+Here, if the matrix size is **n × n**, the total number of iterations is **n × n = n²**.
+
+# Constants in Complexity: Why O(5n) = O(n)
+
+When discussing time complexity, constants don’t matter. O(n), O(5n), and O(500n) are all considered O(n) because we care about the **growth rate**, not the exact runtime.
+
+That said, constants *do* matter in real life, but for now, we’re focusing on the big picture.
 
 ## What is space complexity?
 
-Space complexity is how much memory your program uses depending on the length of the input. There are 2 main sources of space complexity. First, you can create space yourself: variables, arrays, matrices, trees, lists, hash tables. If you create an array and put n elements there, you would have O(n), linear space complexity. 
+Space complexity measures how much memory your program uses as the input grows. There are two main contributors to space complexity:
 
+1. **Variables and Data Structures**
+    
+    If you create an array, list, or matrix with **n** elements, that’s **O(n)** space complexity.
 <Code>
 {
 `def do_something(arr):
-    # constant - O(1) memory
+    # Constant space: O(1)
     a = 5
-    # linear - O(n) memory
-    new_arr = copy(arr) # linear - O(n) memory`
+    # Linear space: O(n)
+    new_arr = copy(arr)`
 }
 </Code>
+2. **The Recursive Call Stack**
 
+    Recursion requires additional memory to keep track of function calls. Each time a function calls itself, the program uses space to store:
+        - Where to return after the call.
+        - What arguments were passed.
 
-## How much space does recursion take?
+The deeper the recursion, the more memory it consumes.
 
-The second source of space complexity is slightly more tricky.
-It is the recursive stack size.
-So if you call your function recursively,
-you use this additional space.
-For example, you call your construction recursively n times,
-computer would need to remember where to return each time
-and what arguments the function was using.
-Obviously, you would need space for it.
-How much space?
-How deep your recursive call stack is.  
+Illustration:
 
 <Image
       src="https://res.cloudinary.com/ava-coding-com/image/upload/v1737832285/Algorithms Book/RecursionStack_gb8yr3.png"
@@ -115,14 +173,9 @@ How deep your recursive call stack is.
       alt="Depth of stack example"
 />
 
-If you're reading right now and does not make a lot
-of sense to you, don't worry, we would get into the details
-and examples a little later. But remember, there are two main
-sources of space complexity: your variables and the stack of recursion.
-Okay? 
+## Want a handy reference?
+You can download this **Time and Space Complexity Poster** to keep the concepts fresh:
 
-
-Here you can download the poster to remember the complexities:
 [Download original](https://res.cloudinary.com/ava-coding-com/image/upload/v1647240152/Algorithms%20Book/1st_opening_ooh6yr.png)
 <Image
       src="https://res.cloudinary.com/ava-coding-com/image/upload/v1647240152/Algorithms%20Book/1st_opening_ooh6yr.png"
@@ -131,11 +184,10 @@ Here you can download the poster to remember the complexities:
       alt="Time and Space Complexities Poster"
 />
 
+## Why Does Complexity Matter?
 
-## Teaser for the next time
+You might be thinking: “Computers are so fast these days—why should I care about complexity?”
 
-If you are reading right now, and thinking: "Why do we use all these measures to count time and space? Why do we care about it so much? Computers are so fast. Yeah, it's the fastest computers in the history. Should we even concern ourselves with this?" 
+Great question! And it’s one we’ll answer in the next lesson. I’ll teach you how competitive programmers predict runtimes using simple tricks. It’s a game-changer for solving problems efficiently.
 
-### The next lesson would be exactly for you!
-
-Because I will teach you a trick Olympiad programmers use in their competitions. You would look at a problem and you could predict how much time it would actually take to run! This is super awesome, so don't miss it. I will see you next week.
+Stay tuned, and I’ll see you next week!
