@@ -1,15 +1,20 @@
 
 import Image from 'next/image'
-import YoutubeClassic from "../components/YoutubeClassic";
+import YoutubeShort from "../components/YoutubeShort";
 import Code from "../components/Code";
 
+You can read, or you can watch the video:
 
-<YoutubeClassic code="8ZjgN0POkEo?si=pRSJIv_XUvBRSLiB"/>
+<YoutubeShort code="8ZjgN0POkEo?si=pRSJIv_XUvBRSLiB"/>
 
 # What is time and space complexity, exactly?
 
 
-Hi. Hello! Very happy to see you here. It's Ava, I'm your Algorithms and Data Structures teacher. And thank you for all of you, who joined the Linkedin Group! I'm really happy to see you here, really happy for us to start. And today we are talking about the Time and Space complexity. 
+Hi. Hello! Very happy to see you here.
+It's Ava, I'm your Algorithms and Data Structures teacher.
+And thank you for all of you, who joined the [Linkedin Group](https://www.linkedin.com/groups/12837112/) !
+I'm really happy to see you here, really happy for us to start.
+And today we are talking about the Time and Space complexity. 
 
 ## What is n? 
 
@@ -17,7 +22,9 @@ So if you ever heard the words thrown around, like "n log n", "O(n)", "exponenti
 
 <Code>
 {
-`def multiply(arr): # length of arr is "n"
+
+`# length of arr is "n"
+def multiply(arr): 
     res = 1
     for a in arr:
         res *= a
@@ -80,7 +87,9 @@ Space complexity is how much memory your program uses depending on the length of
 <Code>
 {
 `def do_something(arr):
-    a = 5 # constant - O(1) memory
+    # constant - O(1) memory
+    a = 5
+    # linear - O(n) memory
     new_arr = copy(arr) # linear - O(n) memory`
 }
 </Code>
