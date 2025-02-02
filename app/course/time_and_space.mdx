@@ -3,9 +3,12 @@ import Image from 'next/image'
 import YoutubeShort from "../components/YoutubeShort";
 import Code from "../components/Code";
 
-You can read, or you can watch the video:
-
-<YoutubeShort code="8ZjgN0POkEo?si=pRSJIv_XUvBRSLiB"/>
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1647240152/Algorithms%20Book/1st_opening_ooh6yr.png"
+      width={960}
+      height={540}
+      alt="Time and space complexity poster"
+/>
 
 # What time and space complexity is, exactly? 
 
@@ -347,7 +350,10 @@ Since each recursive call **splits the problem in half**, we only go **log(n) le
 
 **Total recursive calls: ~log(100) ≈ 6**
 
-Each call uses **a bit of memory**, but once a call finishes, it **disappears** from the stack. So at most, the stack holds **O(log n) calls at a time**.
+Each call uses **a bit of memory**, but once a call finishes,
+it **disappears** from the stack.
+ So at most, the stack holds **O(log n) calls at a time**.
+
 ## Want a handy reference?
 You can download this **Time and Space Complexity Poster** to keep the concepts fresh:
 
@@ -360,3 +366,7 @@ You might be thinking: “Computers are so fast these days—why should I care a
 Great question! And it’s one we’ll answer in the next lesson. I’ll teach you how competitive programmers predict runtimes using simple tricks. It’s a game-changer for solving problems efficiently.
 
 Stay tuned, and I’ll see you next week!
+
+## If you want to refresh concepts quickly, watch a video:
+
+<YoutubeShort code="8ZjgN0POkEo?si=pRSJIv_XUvBRSLiB"/>
