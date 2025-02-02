@@ -153,24 +153,53 @@ In the worst case, you’ll have to check every element until you find it
 }
 </Code>
 
-## O(n log n) "an log an"
+## O(n log n): "An Log An" – A Little Extra Work
 
-As you know, logarithms are fast. So this algorithm is just a little bit slower than your usual linear one.
-For n = 10^9 n log n is 10^9 * log 10^9 = 10^9  * (3 log 10^3) = 30 ^ 10^9
+You already know that logarithmic time is fast—like
+a ninja slicing a problem in half at every step.
+Now, O(n log n) just means we take that speed and
+ multiply it by n.
+It’s still much better than O(n²),
+ but a bit more work than a simple O(n).
 
-This complexity is common in efficient sorts, like
+**How Fast (or Slow) Is It?**
 
-1. Merge sort
-2. Heap sort
-3. Average case of quick sort
+For **n = 10⁹**, we get:
 
-Example:
+```
+nlog⁡n = 10⁹ × log⁡10⁹
+```
+
+Since **log(10⁹) = 3 log(10³) ≈ 30**, we get:
+```
+10⁹ × log⁡10⁹ = 30 × 10⁹
+```
+
+That’s **30 billion steps**—not exactly "instant," but way better than **O(n²)**, which would be **10¹⁸ steps** (yikes!).
+
+**Where Do We See O(n log n)?**
+
+This complexity is common in **efficient sorting algorithms**, including:
+
+1. **Merge Sort** – Divide, conquer, and merge.
+2. **Heap Sort** – Uses a priority queue (fancy way of saying "organized chaos").
+3. **Quick Sort** – When it behaves (i.e., in its average case).
+
+**Example: Sort**
+
+Good news: You don’t need to write your own O(n log n) sorting algorithm!
+Python's built-in sort function already uses Timsort, which is O(n log n) in most cases.
 
 <Code>
 {
-`sorted(array) # using tim sort here`
+`# Using Timsort under the hood!
+sorted(array)
+`
 }
 </Code>
+So next time you need to sort a list fast,
+just let the language do the heavy lifting—because O(n log n)
+ is as good as it gets for general-purpose sorting!
 
 ## O(n²): Quadratic Time Complexity
 
