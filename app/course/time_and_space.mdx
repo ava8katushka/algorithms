@@ -7,7 +7,7 @@ You can read, or you can watch the video:
 
 <YoutubeShort code="8ZjgN0POkEo?si=pRSJIv_XUvBRSLiB"/>
 
-# Demystifying Time and Space Complexity for Beginners
+# What time and space complexity is, exactly? 
 
 Hi there! Welcome—I'm so glad you're here.
 My name's Ava, and I’ll be your guide through Algorithms and Data Structures.
@@ -70,6 +70,40 @@ b += 1`
 }
 </Code>
 
+### O(1): Logarithmic time complexity
+
+Logarithm grows very slow. Logarithm of 1000 ~ log 1024 = 10
+If we square the input, log 1000^2 = 2 log 1000 ~ 20
+It works with any power. E.g. log 1000^5 = 5 log 1000 ~ 50
+Logarithmic algorithms in practice are very fast. 
+
+Example:
+Finding number in a sorted array 
+
+<Code>
+{
+`def binary_search(array, start, end, target):
+    if start >= end:
+        return -1
+    middle = (start + end) // 2
+    if array[middle] == target:
+        return middle
+    if array[middle] < target:
+        return binary_search(array, middle + 1, end, target)
+    return binary_search(array, start, middle, target)`
+}
+</Code>
+
+**Finding 87 in sorted array of 100 natural numbers would go:**
+1. Search from 1 to 100 number 87. Middle is 50. 50 is smaller than 87.
+2. Search from 51 to 100 number 87. Middle is 75. 75 is smaller than 87.
+3. Search from 76 to 100 number 87. Middle is 88. 88 is bigger than 87.
+4. Search from 76 to 88 number 87. Middle is 82. 82 is smaller than 87.
+5. Search from 83 to 88 number 87. Middle is 85. 85 is smaller than 87.
+6. Search from 86 to 88 number 87. Middle is 87. We found it! 
+
+In total of 6 steps we were able to find a number in array of 100 numbers! Impressive!
+If algorithm is logarithmic it guarantees you, that you will do only O(log n) steps.
 
 # O(n): Linear Time Complexity
 
@@ -215,12 +249,6 @@ Illustration:
 You can download this **Time and Space Complexity Poster** to keep the concepts fresh:
 
 [Download original](https://res.cloudinary.com/ava-coding-com/image/upload/v1647240152/Algorithms%20Book/1st_opening_ooh6yr.png)
-<Image
-      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1647240152/Algorithms%20Book/1st_opening_ooh6yr.png"
-      width={1000}
-      height={500}
-      alt="Time and Space Complexities Poster"
-/>
 
 ## Why Does Complexity Matter?
 
