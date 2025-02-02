@@ -72,13 +72,31 @@ b += 1`
 
 ### O(1): Logarithmic time complexity
 
-Logarithm grows very slow. Logarithm of 1000 ~ log 1024 = 10
-If we square the input, log 1000^2 = 2 log 1000 ~ 20
-It works with any power. E.g. log 1000^5 = 5 log 1000 ~ 50
-Logarithmic algorithms in practice are very fast. 
+Logarithms grow sloooow.
+Like, "watching-paint-dry" slow.
+But that’s a good thing when it comes to algorithms!
 
-Example:
-Finding number in a sorted array 
+**Here’s the deal:**
+
+- log(1024) ≈ 10
+- Square the input? log(1000²) = 2 × log(1000) ≈ 20
+- Raise it to the fifth power? log(1000⁵) = 5 × log(1000) ≈ 50
+
+The key takeaway? Even if the input size explodes, the number of steps only creeps up.
+Logarithmic algorithms are like efficient librarians who don’t
+waste time checking every book when looking for yours.
+
+**Example: Binary Search – The Game of Halves**
+
+Let’s say you’re searching for 87 in a sorted list of 100 natural numbers.
+Instead of going one by one like a caveman, you take the "divide and conquer" approach:
+
+1. Check the middle (50). Too low!
+2. Check the middle of the upper half (75). Still too low.
+3. Middle of 76-100 is 88. Too high!
+4. Middle of 76-88 is 82. Too low.
+5.  Middle of 83-88 is 85. Still low.
+6. Middle of 86-88 is 87. Boom! Found it in just 6 steps.
 
 <Code>
 {
@@ -94,16 +112,9 @@ Finding number in a sorted array
 }
 </Code>
 
-**Finding 87 in sorted array of 100 natural numbers would go:**
-1. Search from 1 to 100 number 87. Middle is 50. 50 is smaller than 87.
-2. Search from 51 to 100 number 87. Middle is 75. 75 is smaller than 87.
-3. Search from 76 to 100 number 87. Middle is 88. 88 is bigger than 87.
-4. Search from 76 to 88 number 87. Middle is 82. 82 is smaller than 87.
-5. Search from 83 to 88 number 87. Middle is 85. 85 is smaller than 87.
-6. Search from 86 to 88 number 87. Middle is 87. We found it! 
-
-In total of 6 steps we were able to find a number in array of 100 numbers! Impressive!
-If algorithm is logarithmic it guarantees you, that you will do only O(log n) steps.
+Instead of checking **100 numbers**, we checked only **6**.
+That’s the magic of O(log n)—the bigger the list, the more it saves you time.
+Logarithmic time is like leveling up in a video game: each level (step) cuts the remaining work **in half**.
 
 # O(n): Linear Time Complexity
 
