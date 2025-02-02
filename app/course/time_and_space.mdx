@@ -54,7 +54,7 @@ Think of it as a way to estimate efficiency.
 Let’s explore a few common types:
 
 
-### O(1): Constant Time Complexity
+## O(1): Constant Time Complexity
 
 The best-case scenario!
 Here, the runtime is independent of the input size.
@@ -70,7 +70,7 @@ b += 1`
 }
 </Code>
 
-### O(1): Logarithmic time complexity
+## O(1): Logarithmic time complexity
 
 Logarithms grow sloooow.
 Like, "watching-paint-dry" slow.
@@ -116,7 +116,7 @@ Instead of checking **100 numbers**, we checked only **6**.
 That’s the magic of O(log n)—the bigger the list, the more it saves you time.
 Logarithmic time is like leveling up in a video game: each level (step) cuts the remaining work **in half**.
 
-# O(n): Linear Time Complexity
+## O(n): Linear Time Complexity
 
 With linear complexity, the runtime grows in **direct proportion** to the input size. If the input size doubles, the runtime roughly doubles.
 
@@ -153,8 +153,26 @@ In the worst case, you’ll have to check every element until you find it
 }
 </Code>
 
+## O(n log n) "an log an"
 
-# O(n²): Quadratic Time Complexity
+As you know, logarithms are fast. So this algorithm is just a little bit slower than your usual linear one.
+For n = 10^9 n log n is 10^9 * log 10^9 = 10^9  * (3 log 10^3) = 30 ^ 10^9
+
+This complexity is common in efficient sorts, like
+
+1. Merge sort
+2. Heap sort
+3. Average case of quick sort
+
+Example:
+
+<Code>
+{
+`sorted(array) # using tim sort here`
+}
+</Code>
+
+## O(n²): Quadratic Time Complexity
 
 Quadratic complexity arises when your program performs nested operations— for example, when one loop is inside another.
 If the input size increases by **n**, the number of operations increases by **n²**.
