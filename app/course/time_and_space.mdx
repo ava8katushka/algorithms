@@ -302,7 +302,52 @@ Illustration:
       alt="Depth of stack example"
 />
 
+## O(log n) - Logarithmic space complexity
 
+Could it be? Yes! 
+But unlike time complexity, **logarithmic space is rare**—because we usually
+allocate memory **linearly** - O(n) -  rather than shrinking it like
+ a logarithm.
+
+However, **recursive** logarithmic algorithms are an exception! They don’t store any variable arrays but instead use memory **only for the recursive call stack**, which grows logarithmically.
+
+
+**Example: Binary Search & Logarithmic Space**
+
+Remember our binary search from before?
+ It’s not just **O(log n) time**, it’s also **O(log n) space**—but only in its **recursive form**!
+<Code>
+{
+`def binary_search(array, start, end, target):
+    if start >= end:
+        return -1
+    middle = (start + end) // 2
+    if array[middle] == target:
+        return middle
+    if array[middle] < target:
+        return binary_search(array, middle + 1, end, target)
+    return binary_search(array, start, middle, target)`
+}
+</Code>
+
+**Why O(log n) Space?**
+
+Each function call **adds a frame to the call stack**, storing variables like `start`, `end`, and `middle`.
+Since each recursive call **splits the problem in half**, we only go **log(n) levels deep** before stopping.
+
+**Example: Searching in 100 Numbers**
+
+- First call: `search(1, 100)`
+- Second call: `search(51, 100)`
+- Third call: `search(76, 100)`
+- Fourth call: `search(76, 88)`
+- Fifth call: `search(83, 88)`
+- Sixth call: `search(86, 88)`
+- Found it! 🎉
+
+**Total recursive calls: ~log(100) ≈ 6**
+
+Each call uses **a bit of memory**, but once a call finishes, it **disappears** from the stack. So at most, the stack holds **O(log n) calls at a time**.
 ## Want a handy reference?
 You can download this **Time and Space Complexity Poster** to keep the concepts fresh:
 
