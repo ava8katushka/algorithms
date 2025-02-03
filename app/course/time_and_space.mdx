@@ -10,7 +10,7 @@ import Code from "../components/Code";
       alt="Time and space complexity poster"
 />
 
-# What time and space complexity is, exactly? 
+# What is time and space complexity, exactly? 
 
 Hi there! Welcome—I'm so glad you're here.
 My name's Ava, and I’ll be your guide through Algorithms and Data Structures.
@@ -64,16 +64,27 @@ Here, the runtime is independent of the input size.
 Whether the input has 10 elements or 10 billion,
  it takes the same amount of time.
 
-Example:
+**Examples of O(1) Operations:**
+
+- Accessing an element in an array/list by index
+- Getting the length of a list in Python
+- Pushing/Popping from the end of a list
+- Dictionary (HashMap) lookups and inserts (on average)
+- Set operations: adding, removing, checking membership
+- Modulo and basic arithmetic operations
 
 <Code>
 {
-`a = 0
-b += 1`
+`def check_cache(cache, target):
+    # Searching in a hashtable is amortized O(1)
+    if target in cache:
+        # Retrieving element from a hashtable is amortized O(1)
+        return cache[target]
+    return None`
 }
 </Code>
 
-## O(1): Logarithmic time complexity
+## O(log n): Logarithmic time complexity
 
 Logarithms grow sloooow.
 Like, "watching-paint-dry" slow.
@@ -85,7 +96,7 @@ But that’s a good thing when it comes to algorithms!
 - Square the input? log(1000²) = 2 × log(1000) ≈ 20
 - Raise it to the fifth power? log(1000⁵) = 5 × log(1000) ≈ 50
 
-The key takeaway? Even if the input size explodes, the number of steps only creeps up.
+The key takeaway? Even if the input size is gigantic, the number of steps only creeps up.
 Logarithmic algorithms are like efficient librarians who don’t
 waste time checking every book when looking for yours.
 
@@ -117,7 +128,7 @@ Instead of going one by one like a caveman, you take the "divide and conquer" ap
 
 Instead of checking **100 numbers**, we checked only **6**.
 That’s the magic of O(log n)—the bigger the list, the more it saves you time.
-Logarithmic time is like leveling up in a video game: each level (step) cuts the remaining work **in half**.
+Each step cuts the remaining work **in half**.
 
 ## O(n): Linear Time Complexity
 
@@ -281,11 +292,10 @@ Space complexity measures how much memory your program uses as the input grows. 
     If you create an array, list, or matrix with **n** elements, that’s **O(n)** space complexity.
 <Code>
 {
-`def do_something(arr):
-    # Constant space: O(1)
-    a = 5
-    # Linear space: O(n)
-    new_arr = copy(arr)`
+`def find_positive(arr):
+    n = len(arr)
+    # Allocating linear space: O(n)
+    positive = [arr[i] > 0 for i in range(n)]`
 }
 </Code>
 2. **The Recursive Call Stack**
@@ -294,7 +304,7 @@ Space complexity measures how much memory your program uses as the input grows. 
         - Where to return after the call.
         - What arguments were passed.
 
-The deeper the recursion, the more memory it consumes.
+The deeper the recursion, the more memory it consumes. That why if you do too many recursive calls, you'll get **maximum recursion depth exceeded**.
 
 Illustration:
 
