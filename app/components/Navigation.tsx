@@ -1,30 +1,36 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 
+const Navbar = () => (
+  <>
+    {/* Spacer to prevent content from being covered */}
+    <div style={{ height: "64px" }}></div>
 
-export default function Navigation() {
-  return (
-    <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-start">
+    <nav className="navbar is-dark is-fixed-top" style={{ boxShadow: "0 2px 10px rgba(0, 0, 0, 0.2)", zIndex: 1000 }}>
+      <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item" href="/chapter/time_and_space/about">
-            <span className="icon-text">
-              <span className="icon">
-                <FontAwesomeIcon icon={["fas", "house"]} />
-              </span>
-            </span>
-          </a>
+          <Link href="/" className="navbar-item has-text-weight-bold is-size-4">
+            🚀 Ava-coding
+          </Link>
         </div>
-        <a className="navbar-item">Ava coding</a>
-      </div>
-      <div className="navbar-end">
-        <a className="navbar-item" href="https://github.com/ava8katushka/algorithms">
-          <span className="icon-text">
-            <span className="icon">
-              <FontAwesomeIcon icon={["fab", "github"]} />
-            </span>
-          </span>
-        </a>
+        <div id="navMenu" className="navbar-menu">
+          <div className="navbar-end">
+            {/* <Link href="/about" className="navbar-item" style={{ minWidth: "140px" }}>
+              About Me
+            </Link> */}
+            <a className="navbar-item" href="https://github.com/ava8katushka/algorithms" target="_blank" rel="noopener noreferrer">
+              <span className="icon-text">
+                <span className="icon">
+                  <FontAwesomeIcon icon={["fab", "github"]} />
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
     </nav>
-  );
-}
+  </>
+);
+
+export default Navbar;
+
