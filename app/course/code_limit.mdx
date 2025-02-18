@@ -1,93 +1,81 @@
-# How never ever to have a code limit
+import YoutubeShort from "../components/YoutubeShort";
 
-Did you notice that some people by just looking at the problem,
- do know which algorithm they should use to solve it?
+# How to Never Ever Have a Code Limit
 
+Have you ever noticed that some people can look at a problem and instantly know which algorithm to use? It almost feels like magic—but it’s not! Today, we’ll talk about how **you** can do it too.
 
- Today we will disscuss how you can do it too.
- All you need to do, is to **pay attention to constrains**.
+The secret? **Pay attention to constraints.**
 
+Algorithms aren’t like superheroes or villains—they’re just tools. Whether they save the day or cause disaster depends entirely on the size of the input. Once you understand this, you’ll never waste time on an inefficient solution again.
 
- Algorithms are not inherently good or bad. 
- They are only so, then you know what kind of input you need to deal with.
+## One Number to Remember: `10⁹`
 
- Let's learn some back of the napkins calculations you can do, to estimate your running time.
+There’s just one number you need to keep in mind: **10⁹**.
 
- ## One number to remember - `10^9`
+This is roughly the number of operations your **computer can handle per second**. That’s why processor speeds are measured in **Gigahertz**—the prefix "Giga" literally means `10⁹`.
 
-All you're gonna do is to remember one number.
-`10^9`.
+Of course, real-world performance depends on a constant factor (`C × 10⁹`), but for quick estimations, `10⁹` is good enough.
 
-This is an approximate amount of operations your **computer is able to do per second**.
-That's why processor frequency is measured in **Gigahertz**. Giga prefix exactly means `10^9`.
+## Estimating Running Time Using Constraints
 
-Of course, it has a constant associated with it.
+Let’s apply this idea to some coding problems.
 
-It's not exactly `10^9`, but approximately it is. `C * 10^9`.
+### Example 1: [Two Sum](https://leetcode.com/problems/two-sum/description/)
 
-
-## How to estimate running time using constrains
-
-Let's take a sample leetcode problem.
-
-### [Two sum](https://leetcode.com/problems/two-sum/description/)
-
-Given an array of integers `nums` and an integer `target`, return *indices* of the two numbers such that they add up to `target`.
+#### Problem Statement
+Given an array `nums` and an integer `target`, return the **indices** of two numbers that add up to `target`.
 
 #### Constraints:
+- `2 ≤ nums.length ≤ 10⁴`
+- `-10⁹ ≤ nums[i] ≤ 10⁹`
+- `-10⁹ ≤ target ≤ 10⁹`
 
-- `2 <= nums.length <= 10^4`
-- `-10^9 <= nums[i] <= 10^9`
-- `-10^9 <= target <= 10^9`
+Before even thinking about an algorithm, check the constraints. The input size is at most `10⁴`, and most coding platforms allow **1 second** to run the solution.
 
-Even before you start thinking about the algorithm,
- this constrains give you a hint of which solution would be acceptable.
-1 second is usually a limit, coding platforms set for their submissions.
-So counting on the fact that you can do approximately `10^9` operations per second,
-if your input size is `10^4` and your algorithm is quadratic, you will need ` ~ (10^4)^2 = 10^8` operations.
-Since `10^8 < 10^9` this algorithm would be accepted by the platform. 
-I think that's exactly why this problem is easy - even quadratic algorithm produces well enougth answer.
+A **quadratic solution** (`O(n²)`) would require ~`(10⁴)² = 10⁸` operations, which is less than `10⁹`, meaning it should pass just fine.
 
-### [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+That’s exactly why this problem is **easy**—even a simple brute-force approach is fast enough!
 
-Given a string `s`, find the length of the longest
-*substring*
-without duplicate characters.
+---
+
+### Example 2: [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/description/)
+
+#### Problem Statement
+Given a string `s`, find the length of the longest *substring* without duplicate characters.
 
 #### Constraints:
+- `0 ≤ s.length ≤ 5 × 10⁴`
 
-   -  `0 <= s.length <= 5 * 10^4`
+If we try a **quadratic algorithm**, we’d have to do `(5 × 10⁴)² = 25 × 10⁸ = 2.5 × 10⁹` operations. Since our computer can handle `10⁹` operations per second, this would take **2.5 seconds**—too slow!
 
-Here, if we go with quadratic algoritm, you will need to do `(5 * 10^4)^2 = 25 * 10^8 = 2,5 * 10^9` operations.
-You can see that with `10^9` operations per second,  `2,5 * 10^9` would take you `2,5` seconds. 
-So quadratic algorithm will guarantee you a time limit.
+That means a **quadratic approach is too slow** for this problem. We need something better, like an `O(n log n)` or `O(n)` solution:
 
-On the other hand, `O(n log n)` algorithm or `O(n)` algorithm will go just fine:
-```
-5 * 10^4 * log (5 * 10^4) ~ 2,3 * 10^5
-```
 
-As `2,3 * 10^5` is much less than `10^9`.
+Since `2.3 × 10⁵` is **way** less than `10⁹`, an optimized algorithm will run in time. This is why the problem is **medium**—brute force won’t cut it.
 
-This problem is medium - simplest solution would not pass the bar.
+---
 
-It's useful when you are solving problems on leetcode or trying to score in the contest, but is it useful in a real interview setting?
+## How to Use This in a Coding Interview
 
-Well, yes!
+### Coding Assessments
+This technique is super useful for **automated coding assessments**, where you need to impress the system, not a human. If your code times out, knowing how to estimate complexity will help you quickly adjust your approach.
 
-## How to use this during coding interview
+### Live Interviews: Always Ask About Constraints
+In real interviews, always ask:
+- **How large is the input?**
+- **How often will this function be called?**
 
-### Coding assesments
+This helps you understand what matters most—should you optimize for time, space, or simplicity? With this mindset, you’ll make smarter design choices and impress interviewers.
 
-t's useful knowledge for Coding Assesments
- where you need to impress the system, and not the human.
+To help you remember, here’s a fun video for you:
 
-### Always ask about constrains during the coding interview
+<YoutubeShort code="F0lzIjzoOmc"/>
+---
 
-- How long this input array is expected to be?
-- How many times we expect this function to be called?
+## TL;DR
+1. **Remember `10⁹`**—the number of operations per second your computer can handle.
+2. **Check constraints first**—they tell you what kind of algorithm will work.
+3. **Estimate running time**—use quick calculations to see if your approach will be too slow.
+4. **Use this in interviews**—ask about constraints to pick the best solution!
 
-Helps you to put your interviewing question in context
- and help you prioritize the right things.
-
-To help you rememeber, this video is for you:
+Master this, and you’ll **never** have to worry about time limits again!
