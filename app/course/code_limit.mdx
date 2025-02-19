@@ -2,19 +2,32 @@ import YoutubeShort from "../components/YoutubeShort";
 
 # How to Never Ever Have a Code Limit
 
-Have you ever noticed that some people can look at a problem and instantly know which algorithm to use? It almost feels like magic—but it’s not! Today, we’ll talk about how **you** can do it too.
+Have you ever noticed that some people can look at a problem
+ and instantly know which algorithm to use?
+  It almost feels like magic—but it’s not!
+   Today, we’ll talk about how **you** can do it too.
 
 The secret? **Pay attention to constraints.**
 
-Algorithms aren’t like superheroes or villains—they’re just tools. Whether they save the day or cause disaster depends entirely on the size of the input. Once you understand this, you’ll never waste time on an inefficient solution again.
+Algorithms aren’t like superheroes or villains—they’re just tools. 
+Whether they save the day or cause disaster depends entirely 
+on the constrains. Nobody would be mad at you if you sort 10-items array even with exponential sort. 
+ Once you know how to use constrains to your advantage, 
+ you will know exactly where you can slack, and there you should try your harderst. 
 
 ## One Number to Remember: `10⁹`
 
-There’s just one number you need to keep in mind: **10⁹**.
+There is a **good rule of thumb** for competitive programming:
+ computers can handle ~ `10⁹` **basic** operations per second.
 
-This is roughly the number of operations your **computer can handle per second**. That’s why processor speeds are measured in **Gigahertz**—the prefix "Giga" literally means `10⁹`.
+Modern CPUs run at **GHz** speeds, meaning they can process billions of instructions per second.
+The prefix **"Giga"** literally means `10⁹`.
 
-Of course, real-world performance depends on a constant factor (`C × 10⁹`), but for quick estimations, `10⁹` is good enough.
+Keep in mind, that *real-world performance* varies depending on factors like **cache efficiency, memory access, and CPU architecture**.
+
+But number `10⁹` is good enough for back-of-envelope estimations.
+
+This is roughly the number of **basic** operations your **process can handle per second**. 
 
 ## Estimating Running Time Using Constraints
 
@@ -27,8 +40,6 @@ Given an array `nums` and an integer `target`, return the **indices** of two num
 
 #### Constraints:
 - `2 ≤ nums.length ≤ 10⁴`
-- `-10⁹ ≤ nums[i] ≤ 10⁹`
-- `-10⁹ ≤ target ≤ 10⁹`
 
 Before even thinking about an algorithm, check the constraints. The input size is at most `10⁴`, and most coding platforms allow **1 second** to run the solution.
 
@@ -51,7 +62,10 @@ If we try a **quadratic algorithm**, we’d have to do `(5 × 10⁴)² = 25 × 1
 That means a **quadratic approach is too slow** for this problem. We need something better, like an `O(n log n)` or `O(n)` solution:
 
 
-Since `2.3 × 10⁵` is **way** less than `10⁹`, an optimized algorithm will run in time. This is why the problem is **medium**—brute force won’t cut it.
+`5 × 10⁴ × log(5 × 10⁴) ≈ 8 × 10⁵`
+
+
+Since `8 × 10⁵` is **way** less than `10⁹`, an optimized algorithm will run in time. This is why the problem is **medium**—brute force won’t cut it.
 
 ---
 
@@ -61,7 +75,11 @@ Since `2.3 × 10⁵` is **way** less than `10⁹`, an optimized algorithm will r
 This technique is super useful for **automated coding assessments**, where you need to impress the system, not a human. If your code times out, knowing how to estimate complexity will help you quickly adjust your approach.
 
 ### Live Interviews: Always Ask About Constraints
-In real interviews, always ask:
+
+Some interviewers **intentionally** leave constraints vague to see if you **ask for them**.
+
+Be sure to enquire:
+
 - **How large is the input?**
 - **How often will this function be called?**
 
