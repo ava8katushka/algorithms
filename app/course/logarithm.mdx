@@ -1,20 +1,164 @@
 import YoutubeShort from "../components/YoutubeShort";
+import Image from 'next/image'
 
-# So, what is a logarithm?
-If you type the definition of logarithm in Google, it spits out something unhelpful, like:
+<YoutubeShort code="uo184O1gQAY?si=BtK5FJu59xqpRcxJ" />
+
+# What is a logarithm?
+
+If you type the definition of **logarithm** in `Google`, it spits out something *unhelpful*, like:
 > a quantity representing the power to which a fixed number (the base) must be raised to produce a given number.
 
 Don't blame yourself if you struggle with remembering it.
 
-The fact is, nobody in Computer Science things of algorithm like that.
+The fact is, **nobody in Computer Science thinks of logarithm like that**.
 
 So, how do they think about it?
 
-Well, as a tree height...
+Well, as a **tree height**...
 
-Let me explain.
+Don't kill me. Let me explain.
 
-<YoutubeShort code="uo184O1gQAY?si=BtK5FJu59xqpRcxJ" />
+## What tree are we talking about?
+
+Are Computer Scientists insane? No. We are just imaginitive. 
+
+### Binary search tree
+
+We can think of sorted array as a tree.
+Every element of an array is a node. Middle of the array is the root.
+Then all the elements left to the node is *smaller than it*. 
+Every element to the right of the node is *larger than it*.
+
+Every node has **at most two children**.
+
+Nodes that have *no children*, we would call **leaves**.
+
+For example, sorted array  `[1, 3, 4, 5, 6, 7, 7, 8, 23, 55, 80, 111, 300, 901]`
+ in the tree form could look like this:
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1742198518/Tree_with_numbers_zm77ec.png"
+      width={400}
+      height={300}
+      alt="Time and space complexity poster"
+/>
+
+Does it look like a tree to you? Well, it's **upside down**, to begin with.
+ But you can see root, branches, leaves - now you can see the tree!
+
+In fact, as long as we follow the rule **"all to the left - smaller, all to the right - larger"**, *even this construction* could call itself a tree:
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1742245523/Unbalanced_Tree_lfzw2d.png"
+      width={400}
+      height={300}
+      alt="Time and space complexity poster"
+/>
+
+This one, is, in fact, **unbalanced**.
+
+Let's look at the height of this tree.
+
+Height of the tree is the length shortest path from the root to one of the leaves.
+It correspons to your *intuition* of what the heigh of the tree would be.
+
+For example, height of this tree of 15 elements is 4:
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1742245637/Tree_Height_iyv67e.png"
+      width={500}
+      height={400}
+      alt="Tree with height of 4"
+/>
+
+Here the tree has 31 elements, and the height is just 5:
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1742245769/Tree_Larger_1_fr9lqf.png"
+      width={500}
+      height={400}
+      alt="Tree with height of 5"
+/>
+
+And if the double the elements again, the tree height increases **just by one**:
+this tree has 63 elements and the height of 6.
+
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1742245877/Tree_Larger_xx_lsxnb3.png"
+      width={500}
+      height={400}
+      alt="Tree with height of 5"
+/>
+
+Isn't that increadible? Our tree is so large, but the height is still pretty small!
+In fact, it's just **one unit higher than the tree with just half of it's elements**.
+
+Funny, right? This tree height grows very slow.
+
+**So the height of this tree is indeed logarithm.**
+
+No panic! You weren't scared before, right?  It's just one pretty tree.
+
+So if the tree has `n` nodes, the height is approximately `log₂n`.
+
+For this definition to work, we need the tree to be `balanced` - so any one part is not much larger than an other. 
+
+But you got it! **Logarithm is just a height of the tree.**
+
+
+Exhale. Nothing scary. Even nothing much mathematical. 
+Draw this tree to your math teacher. Log is literal log! xD
+They might just love it :D 
+
+## log₃n, log₁₀n and other logs
+
+Why `log₂n` you might ask. Very simple: are nodes had **at most two children**.
+If we draw ourselves a tree and allow each node to have 3 children, the height of this tree would be ` log₃n`:
+
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1744269813/Tree3_zmfzva.png"
+      width={500}
+      height={400}
+      alt="Tree with height of 4 with 3 children on each node"
+/>
+
+This tree has `1 + 3 + 9 + 27 = 42` nodes.
+
+Every new level has `3 times` more nodes than one before that.
+
+Last level, <i>leaves</i>, has more nodes, than <i>all the levels before it</i>.
+
+1. log₃1 = 0
+2. log₃3 = 1
+3. log₃9 = 2
+4. log₃27 = 3
+
+So height of the tree with `n` nodes will be `height >= log₃n`.
+
+Asymptotically, `height ~ log₃n`
+
+And if we allow `10` children, resulting height would be around `log₁₀n`.
+
+In fact, for us as Computer Scientists doesn't much matter, which `log` is it.
+
+Because all of logs differ by just a constant:
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1744271819/Algorithms%20Book/Logformula_rttpsz.png"
+      width={500}
+      height={400}
+      alt="loga(x) = logb(x) / logb(a)"
+/>
+
+So as long as you have a tree, you know that it's height is a logarithm. 
+
+Most commonly when talking about logarithms, Computer Scientists assume **logarithm of two**.
+So you might skip saying `log two of an`. Say just `log an`!
+
+You are all set now to use logarithms at full speed! It's not a nightmare - it's just a log!
+
 
 ## Practical use of binary search
 If you think your knowledge of logarithmic algorithms is useless, think again.

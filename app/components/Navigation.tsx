@@ -13,9 +13,9 @@ const Navbar = () => (
             🚀 Ava-coding
           </Link>
         </div>
-        <div id="navMenu" className="navbar-menu">
+        <div className="navbar-menu">
           <div className="navbar-end">
-            <Link href="/aboutme" className="navbar-item" style={{ minWidth: "140px" }}>
+            <Link href="/aboutme" className="navbar-item" style={{ minWidth: "0px" }}>
               About Me
             </Link>
             <a className="navbar-item" href="https://github.com/ava8katushka/algorithms" target="_blank" rel="noopener noreferrer">
