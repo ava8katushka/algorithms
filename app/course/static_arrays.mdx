@@ -1,0 +1,73 @@
+# Computer memory
+
+## How does computer store our data?
+
+When you writing a program, and allocating an array, hashtable or a variable, where does this memory come from? 
+How is it accessesed? 
+And why there is a limit? 
+
+Why certain things happen very fast while others take more time? 
+
+To understand that, we need to get familiar with computer memory and how it operates.
+
+There are few layers you should now about.
+
+### Registers
+
+This is memory **used directly in CPU**. If you do any operations in your code,
+ those operations happen here.
+Processor could load a piece of memory to register, store the result,
+ move it from one register to an other, do simple math or logical operations.
+ Billions of these operations happen per second. 
+Registers are smallest pieces of memory in the computer, holding 8, 16, 32, or 64 bits.
+
+
+### CPU Cache (L1, L2, L3)
+
+Cache tries to "predict" next piece of information needed by CPU.
+This is a buffer between Registers and RAM. 
+It's located close to the registers, so grabbing memory from here will only take computer 2-10 nanoseconds.
+Caches slightly bigger than Registers, hold up to a few megabytes of data:
+
+1. Closest L1 cache could hold 16KB to 128KB per core
+2. L2 cache can range from 256KB to 1MB per core or be shared
+3. L3 cache is typically shared among all cores and can range from 2MB to 32MB or more in high-end processors
+
+Typically data that goes in cache is data which was stored close together
+ in RAM. Each cache has it's "Cache line" size which grabs not only what
+  processor would need right now, but also what lies close and fits into
+   "Cache line".
+
+### RAM - Random Access Memory
+
+This is main and biggest working memory of the computer! 
+This is there your program lives. And any other programs that computer 
+is running. When you shut down your computer, RAM clears up,
+ as there are no more programs running.
+Common sizes of RAM include 4GB, 8GB, 16GB, 32GB, and 64GB, with some high-end systems offering 128GB or more.
+
+The computer where I run this text right now - Macbook Air - has 8GB of RAM.
+When processor tries to access memory located here,
+ it could take it up to 100 nanoseconds.
+
+ You can see that travelling to cache is 10 times faster, than grabbing something from RAM.
+
+
+ ### SSD - Solid State Drive
+
+ This is the first memory on this list which is actually long-term memory! 
+ It's persistent and permanent.
+ It doesn't clear up when your computer shuts down or reloads.
+It keeps the information safely.
+
+But reading something from here could take up to 15 000 nanoseconds. 
+150 times slower than from RAM!
+
+But SSD could be quite big from 120GB to over 30TB!
+
+My computer has exactly 120GB. 
+
+### HDD - Hard Disk Drive
+
+
+

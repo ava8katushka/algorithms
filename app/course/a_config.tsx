@@ -4,6 +4,7 @@ import CodeLimit from "./code_limit.mdx";
 import Logarithm from "./logarithm.mdx";
 import UnderConstruction from "./under_constuction.mdx";
 import TimeComplexities from "./time_complexities.mdx";
+import StaticArrays from "./static_arrays.mdx";
 
 export const pagesConfig: Chapters = {
   time_and_space: {
@@ -24,15 +25,15 @@ export const pagesConfig: Chapters = {
         markdown: <Logarithm />,
         problems: [],
       },
-      o_n: {
-        title:
-          "How to make sense of O(1), O(n), O(n log n), O(a^n) and similar",
-        markdown: <TimeComplexities />,
-        problems: [],
-      },
+      // o_n: {
+      //   title:
+      //     "How to make sense of O(1), O(n), O(n log n), O(a^n) and similar",
+      //   markdown: <TimeComplexities />,
+      //   problems: [],
+      // },
       static_arrays: {
         title: "Computer memory and static arrays",
-        markdown: <UnderConstruction />,
+        markdown: <StaticArrays />,
         problems: [],
       },
       dynamic_arrays: {
