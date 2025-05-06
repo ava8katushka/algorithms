@@ -69,5 +69,29 @@ My computer has exactly 120GB.
 
 ### HDD - Hard Disk Drive
 
+Disks are quite budget-friendly long-term storage solution for big amounts of data.
+But access to them could take 10 000 000 nanoseconds, which is almost 1000 slower than SSD.
+It's ideal for back-up storage and large media libraries.
+
+
+## So what happens if I allocate memory inside my program?
+
+Memory you have allocated would live in RAM, while your program runs.
+When you do any operations, it gets into CPU registers and cache.
+When you want to create an array of data, a block of sequencial memory is given to you.
+First arrays there static, it means they could not change in size.
+If you create array of 10 elements, memory exactly fitting this information is given.
+
+
+But what if you want to store more data in your array?
+What happens with memory?
+As memory for array must be sequencial, new space in memory would be found to fit grown array.
+So the memory would be reallocated. 
+As you know it's quite an expensive operation.
+That's why Computer Scientists have created a trick how not to do this expensive operation very often - dynamic arrays.
+
+
+
+
 
 
