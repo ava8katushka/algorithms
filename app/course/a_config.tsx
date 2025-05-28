@@ -5,6 +5,7 @@ import Logarithm from "./logarithm.mdx";
 import UnderConstruction from "./under_constuction.mdx";
 import TimeComplexities from "./time_complexities.mdx";
 import StaticArrays from "./static_arrays.mdx";
+import DynamicArrays from "./dynamic_arrays.mdx"
 
 export const pagesConfig: Chapters = {
   time_and_space: {
@@ -38,7 +39,7 @@ export const pagesConfig: Chapters = {
       },
       dynamic_arrays: {
         title: "Dynamic arrays and amortized constant",
-        markdown: <UnderConstruction />,
+        markdown: <DynamicArrays />,
         problems: [],
       },
       design_thinking: {
