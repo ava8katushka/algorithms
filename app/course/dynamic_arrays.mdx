@@ -1,1 +1,71 @@
 This chapter will be published on 8th of June 2025.
+
+## Dynamic arrays and amortized constant
+
+I bet you love dynamic arrays. That are arrays that could grow or shrink in size, fitting exactly your needs.
+You don't need to know in advance, how many elements exactly you would need.
+
+But how is it possible, knowing what you know of [memory of the computer](../../chapter/time_and_space/static_arrays)? 
+
+Under the hood, we still use static arrays and allocate new memory.
+
+But how make operations efficient? 
+
+Let's talk about the most common operation: adding element to the end of the array.
+
+## Push back / Append 
+
+``illustration of memory block moving aroung``
+
+If every time that we need to append to the end we would require new memory, this operation would be linear.
+We could not just place a new element there our previous elements are. 
+We would need to reallocate all the elements to the new place.
+That sounds painfull and not efficient.
+
+Let's be smarter. How much memory we would need, we don't know. But let's allocate some extra memory, just in case we will grow.
+How much extra memory? Let's try twice as much, as was asked for.
+
+1. 1st element added: 2 elements allocated
+1. 2nd element added: no move need, just add to the free space
+1. 3rd element added: allocate space for 2 * 2 = 4 elements, move 2 elements, add 3rd.
+1. 4th element added: no move need, just add to the free space
+1. 5th element added: allocate space for 4 * 2 = 8, move 4 elements, add 5th.
+1. 6th element added: no move need, just add to the free space
+1. 7th element added: no move need, just add to the free space
+1. 8th element added: no move need, just add to the free space
+
+``animation with elements``
+
+You can see that on some steps we did constant operation,
+ and on some steps we did linear operations, comparable with the size of the array.
+
+Is it efficient?
+
+Well, at least it seems more efficient than reallocating space each time.
+
+Actually, if you count the price of operation on average, it's constant.
+
+It's called "amortized constant".
+
+But how could it be constant, if we just saw that sometimes it's linear?
+
+## Proof that pushback operation is constant on average
+
+Let's prove it, using "Banker's method"
+
+- Pay slightly more for cheap operation
+- Save it as "tokens"
+- Use this token to pay later for expensive operations
+
+Prepay 3 coins for each insertion
+- 1 coin is raw cost of insertion
+- Other 2 is saved :
+    - Place 1 on the item
+    - Place 1 on the item, which is (capacity / 2) elements priority
+
+
+
+## Daily cost of product use
+1000$, use for 3 years - 1000$ / 365 * 3 ~ 1 dollar per day 
+300$ year subscription, you used 10 times - 30$ per usage
+
