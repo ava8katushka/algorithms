@@ -6,6 +6,7 @@ import UnderConstruction from "./under_constuction.mdx";
 import TimeComplexities from "./time_complexities.mdx";
 import StaticArrays from "./static_arrays.mdx";
 import DynamicArrays from "./dynamic_arrays.mdx"
+import DesignThinking from "./design_thinking.mdx"
 
 export const pagesConfig: Chapters = {
   time_and_space: {
@@ -44,7 +45,7 @@ export const pagesConfig: Chapters = {
       },
       design_thinking: {
         title: "Design thinking: which algorithm is better",
-        markdown: <UnderConstruction />,
+        markdown: <DesignThinking />,
         problems: [],
       },
     },
