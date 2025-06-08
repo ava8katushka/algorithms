@@ -1,21 +1,28 @@
-This chapter will be published on 8th of June 2025.
+import Image from 'next/image'
 
 ## Dynamic arrays and amortized constant
 
-I bet you love dynamic arrays. That are arrays that could grow or shrink in size, fitting exactly your needs.
+I bet you love dynamic arrays. That are arrays that could **grow or shrink in size, fitting exactly your needs**.
 You don't need to know in advance, how many elements exactly you would need.
 
-But how is it possible, knowing what you know of [memory of the computer](../../chapter/time_and_space/static_arrays)? 
+
+> But how is it possible, knowing what you know of [memory of the computer](../../chapter/time_and_space/static_arrays)? 
 
 Under the hood, we still use static arrays and allocate new memory.
 
-But how make operations efficient? 
+But how make operations *efficient*? 
 
-Let's talk about the most common operation: adding element to the end of the array.
+Let's talk about the most common operation: **adding element to the end of the array**.
 
 ## Push back / Append 
 
-``illustration of memory block moving aroung``
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1749376231/Algorithms%20Book/insert_element_phjdxa.png"
+      width={700}
+      height={600}
+      alt="Insert new element into a static array"
+/>
+
 
 If every time that we need to append to the end we would require new memory, this operation would be linear.
 We could not just place a new element there our previous elements are. 
@@ -25,16 +32,26 @@ That sounds painfull and not efficient.
 Let's be smarter. How much memory we would need, we don't know. But let's allocate some extra memory, just in case we will grow.
 How much extra memory? Let's try twice as much, as was asked for.
 
-1. 1st element added: 2 elements allocated
-1. 2nd element added: no move need, just add to the free space
-1. 3rd element added: allocate space for 2 * 2 = 4 elements, move 2 elements, add 3rd.
-1. 4th element added: no move need, just add to the free space
-1. 5th element added: allocate space for 4 * 2 = 8, move 4 elements, add 5th.
-1. 6th element added: no move need, just add to the free space
-1. 7th element added: no move need, just add to the free space
-1. 8th element added: no move need, just add to the free space
+### Let's allocate *current capacity * 2* each time:
 
-``animation with elements``
+1. `1st` element added: `2` elements allocated
+1. `2nd` element added: no move need, just add to the free space
+1. `3rd` element added: allocate space for `2 * 2 = 4` elements, move `2` elements, add 3rd.
+1. `4th` element added: no move need, just add to the free space
+1. `5th` element added: allocate space for `4 * 2 = 8`, move `4` elements, add `5th`.
+1. `6th` element added: no move need, just add to the free space
+1. `7th` element added: no move need, just add to the free space
+1. `8th` element added: no move need, just add to the free space
+
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1749398264/Algorithms%20Book/dynamic_array_wkwaaa.gif"
+      width={700}
+      height={600}
+      alt="Insert new element into a static array"
+/>
+
+
 
 You can see that on some steps we did constant operation,
  and on some steps we did linear operations, comparable with the size of the array.
@@ -43,29 +60,104 @@ Is it efficient?
 
 Well, at least it seems more efficient than reallocating space each time.
 
-Actually, if you count the price of operation on average, it's constant.
+Actually, if you count the **price of operation on average**, it's *constant*.
 
-It's called "amortized constant".
+It's called **"amortized constant"**.
 
-But how could it be constant, if we just saw that sometimes it's linear?
+But how could it be constant, if we just saw that **sometimes it's linear**?
 
 ## Proof that pushback operation is constant on average
 
-Let's prove it, using "Banker's method"
+Let's prove it, using **"Banker's method"**
 
 - Pay slightly more for cheap operation
 - Save it as "tokens"
 - Use this token to pay later for expensive operations
 
-Prepay 3 coins for each insertion
+Prepay **3 coins** for each **insertion**
 - 1 coin is raw cost of insertion
 - Other 2 is saved :
     - Place 1 on the item
     - Place 1 on the item, which is (capacity / 2) elements priority
 
+If we never spend more coins than we suppose to, we have proven it.
 
+### Let's see how it works in an example:
+
+In the beginning we have an array of capacity 1.
+
+#### Insert 1st element ⏹
+
+ Pay 3 coins 🟡 🟡 🟡
+- One coin 🟡 spent on "inserting".
+- One coin 🟡 sits on the element.
+- One coin 🟡 would get on element `(1 / 2)` before, this time it's wasted 🗑.
+
+
+#### Insert 2nd element ⏹
+
+There is nowhere to insert it, so we would spend the 🟡 coin on `1` to reallocate it to the new place with `capacity * 2 = 2` elements.
+
+Pay 3 coins 🟡 🟡 🟡
+- One coin 🟡 spent on "inserting" `2`.
+- One coin 🟡 sits on the element `2`.
+- One coin 🟡 would get on element `(capacity / 2)` before, so on element `1`.
+
+
+#### Insert 3rd element ⏹.
+Where is nowhere to insert it, but whole array is **"prepayed"**, so we can reallocate it to a new place with `capacity * 2 = 2 * 2 = 4`.
+
+Pay 3 coins 🟡 🟡 🟡.
+- One coin 🟡 spent on "inserting" `3`.
+- One coin 🟡 sits on the element `3`.
+- One coin 🟡 goes to `4 / 2` elements before, so to `1`.
+
+Now both `1` and `3` has coins 🟡 🟡.
+
+#### Insert 4th element ⏹.
+
+Pay 3 coins 🟡 🟡 🟡
+
+- One coin 🟡 spent on "inserting" `4`.
+- One coin 🟡 sits on the element `4`.
+- One coin 🟡 goes to `4 / 2` elements before, so to `2`.
+
+#### Insert 5th element ⏹. 
+Where is nowhere to insert it, but whole array is "prepayed", so we can reallocate it to a new place with `capacity * 2 = 4 * 2 = 8`.
+
+Pay 3 coins 🟡 🟡 🟡
+- One coin 🟡 spent on "inserting" `5`.
+- One coin 🟡 sits on the element `5`.
+- One coin 🟡 goes to `8 / 2` elements before, so to `1`.
+
+#### Insert 6th element ⏹.
+- One coin 🟡 spent on "inserting" `6`.
+- One coin 🟡 sits on the element `6`.
+- One coin 🟡 goes to `8 / 2` elements before, so to `2`.
+
+
+#### Insert 7th element ⏹.
+- One coin 🟡 spent on "inserting" `7`.
+- One coin 🟡 sits on the element `7`.
+- One coin 🟡 goes to `8 / 2` elements before, so to `3`.
+
+#### Insert 8th element ⏹.
+- One coin 🟡 spent on "inserting" `8`.
+- One coin 🟡 sits on the element `8`.
+- One coin 🟡 goes to `8 / 2` elements before, so to `4`.
+
+You noticed that **array again gets "prepayed" so we can move it**?
+So per each item we pay no more than 3 🟡 🟡 🟡 coins, which transfers to mean `3 operations`.
+We never do more than `n * 3` operations, while we insert `n` elements into the array.
+
+If you think of regular life, there is a simular concept:
 
 ## Daily cost of product use
-1000$, use for 3 years - 1000$ / 365 * 3 ~ 1 dollar per day 
-300$ year subscription, you used 10 times - 30$ per usage
+
+Concept of amortized constant is similar to calculating price **"per usage"** of something.
+If you bought `1000$` laptop, and you use for `3` years - `1000$ / 365 * 3 ~ 1$`,
+ laptop actually costs you about `a dollar per day` 
+
+But if you bought fancy `300$` year adobe subscription, and you've used `10` times - it's `30$ per usage`.
+So having adobe subscription is **more expensive per usage** than buying a new laptop.
 
