@@ -86,12 +86,21 @@ If we never spend more coins than we suppose to, we have proven it.
 
 In the beginning we have an array of capacity 1.
 
+
 #### Insert 1st element ⏹
 
  Pay 3 coins 🟡 🟡 🟡
 - One coin 🟡 spent on "inserting".
 - One coin 🟡 sits on the element.
 - One coin 🟡 would get on element `(1 / 2)` before, this time it's wasted 🗑.
+
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1749577373/Algorithms%20Book/1sts_uc9lie.gif"
+      width={700}
+      height={600}
+      alt="Insert new element into a dynamic array"
+/>
 
 
 #### Insert 2nd element ⏹
@@ -104,6 +113,14 @@ Pay 3 coins 🟡 🟡 🟡
 - One coin 🟡 would get on element `(capacity / 2)` before, so on element `1`.
 
 
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1749577731/Algorithms%20Book/2nd_assjxd.gif"
+      width={700}
+      height={600}
+      alt="Insert 2nd element into a dynamic array"
+/>
+
+
 #### Insert 3rd element ⏹.
 Where is nowhere to insert it, but whole array is **"prepayed"**, so we can reallocate it to a new place with `capacity * 2 = 2 * 2 = 4`.
 
@@ -114,6 +131,13 @@ Pay 3 coins 🟡 🟡 🟡.
 
 Now both `1` and `3` has coins 🟡 🟡.
 
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1749578173/Algorithms%20Book/3rd_u3hxds.gif"
+      width={700}
+      height={600}
+      alt="Insert 3rd element into a dynamic array"
+/>
+
 #### Insert 4th element ⏹.
 
 Pay 3 coins 🟡 🟡 🟡
@@ -121,6 +145,15 @@ Pay 3 coins 🟡 🟡 🟡
 - One coin 🟡 spent on "inserting" `4`.
 - One coin 🟡 sits on the element `4`.
 - One coin 🟡 goes to `4 / 2` elements before, so to `2`.
+
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1749578552/Algorithms%20Book/4th_fh5ds8.gif"
+      width={700}
+      height={600}
+      alt="Insert 4th element into dynamic array"
+/>
+
 
 #### Insert 5th element ⏹. 
 Where is nowhere to insert it, but whole array is "prepayed", so we can reallocate it to a new place with `capacity * 2 = 4 * 2 = 8`.
@@ -130,10 +163,25 @@ Pay 3 coins 🟡 🟡 🟡
 - One coin 🟡 sits on the element `5`.
 - One coin 🟡 goes to `8 / 2` elements before, so to `1`.
 
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1749578820/Algorithms%20Book/5th_pteszg.gif"
+      width={700}
+      height={600}
+      alt="Insert 5th element into dynamic array"
+/>
+
+
 #### Insert 6th element ⏹.
 - One coin 🟡 spent on "inserting" `6`.
 - One coin 🟡 sits on the element `6`.
 - One coin 🟡 goes to `8 / 2` elements before, so to `2`.
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1749579091/Algorithms%20Book/6th_hjhoc4.gif"
+      width={700}
+      height={600}
+      alt="Insert 6th element into dynamic array"
+/>
 
 
 #### Insert 7th element ⏹.
@@ -141,14 +189,34 @@ Pay 3 coins 🟡 🟡 🟡
 - One coin 🟡 sits on the element `7`.
 - One coin 🟡 goes to `8 / 2` elements before, so to `3`.
 
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1749579197/Algorithms%20Book/7th_aq01jx.gif"
+      width={700}
+      height={600}
+      alt="Insert 7th element into dynamic array"
+/>
+
+
 #### Insert 8th element ⏹.
 - One coin 🟡 spent on "inserting" `8`.
 - One coin 🟡 sits on the element `8`.
 - One coin 🟡 goes to `8 / 2` elements before, so to `4`.
 
+<Image
+      src="
+https://res.cloudinary.com/ava-coding-com/image/upload/v1749579342/Algorithms%20Book/8th_gzoog7.gif"
+      width={700}
+      height={600}
+      alt="Insert 7th element into dynamic array"
+/>
+
+
 You noticed that **array again gets "prepayed" so we can move it**?
 So per each item we pay no more than 3 🟡 🟡 🟡 coins, which transfers to mean `3 operations`.
 We never do more than `n * 3` operations, while we insert `n` elements into the array.
+
+
+That proves that on average, insert is a `O(n * 3) / n = O(1)` - constant operation
 
 If you think of regular life, there is a simular concept:
 
