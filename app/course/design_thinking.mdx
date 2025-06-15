@@ -113,6 +113,72 @@ This approach is taking us
 
 Though it's intuitive, it might not easy to see why some pairs could not be lost this way.
 
+Could we actually find the solution, without considering all the pairs??
+
+Actually, **we ARE considering all the pairs**.
+We just NOT considering them individually.
+We are smartly eliminating the pairs that would not fit.
+
+Let's imagine the pairs on 2D plane.
+
+- On the **horisontal** is index of the *start element*.
+- On the **vertical** is index of the *end element*.
+
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750001440/Algorithms%20Book/Two_pointers_on_two_sum_xeebxn.png"
+      width={700}
+      height={700}
+      alt="How two pointer method works"
+/>
+
+- We should only consider the pair under the diaganal, because our `start < end`.
+
+- We also don't consider any pairs on the diaganal, cause `start != end`.
+
+
+We start with `start = 0` and `end = n - 1`
+
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750001825/Algorithms%20Book/Two_pointers_on_two_sum_h4ybhm.jpg"
+      width={700}
+      height={700}
+      alt="How two pointer method works"
+/>
+
+Knowing that the sum of start and end bigger than the target,
+ eliminates not only pairs `(0, n - 1)` but also all the pairs where `start > 0`:
+ `(1, n - 1)`, `(2, n - 1)`, `(3, n - 1)` and so on. 
+ 
+ Everything to the right of current element.
+
+
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750002121/Algorithms%20Book/Two_pointers_on_two_sum_1_ma5fga.png"
+      width={700}
+      height={700}
+      alt="All right elements are eliminated"
+/>
+
+Similarly, if the element is less than target, we can discard all the elements above it.
+Because any element with end index smaller than current would give equally small sum:
+
+<Image
+      src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750002365/Algorithms%20Book/Two_pointers_on_two_sum_2_djmmne.png"
+      width={700}
+      height={700}
+      alt="All top elements are eliminated"
+/>
+
+This way we actually consider full 2D plane of the elements, eliminating *not only the element which we consider on the route*, but:
+
+-  all pairs like `(start + x, end)` to the right if the pair is **bigger than target**
+-  all pairs like `(start, end - x)` on top if the pair is **smaller than target**
+
+
+
 <Image
       src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750000819/Algorithms%20Book/two_pointers_shesyn.gif"
       width={700}
