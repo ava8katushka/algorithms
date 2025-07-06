@@ -5,15 +5,26 @@ import Image from 'next/image'
 
 Often there is more than 1 solution to any problem.
 
+How should you behave in the interview? 
+
+A lot of interviees believe that you should spill out the most optimized solution you know,
+ as fast as possible.
+ But there is a superior appoarch, which shows your fluency in Computer Science.
+
+- Show that you see multiple solutions to this problem.
+- Compare this solutions between each other.
+- Select the one you choose and argument why.
+
 Let's take a look into a famous [2-sum problem](https://en.wikipedia.org/wiki/Subset_sum_problem).
 
 > Having an array of integers, return any`2`elements that **sum** to a given number called`target`.
 
+The easiest solution you can come up with is *brute force*.
 
 ## Brute force
 
 ### Description
-- Consider all the pairs
+- Consider all the pairs of numbers in the array
 - If any of them sum to the target, return the result
 
 ### Code
@@ -47,6 +58,11 @@ It is simple to understand, it doesn't require additional space.
 
 Running time is pretty slow.
 
+> Should you mention it in the interview? Yes you should! No need to go in the details, just summarize the approach and the time and space complexity.
+ Most likely interviewer would ask if there is a better approach, but seeing the brute force sets you up on the good foot.
+
+If you think of using some extra storage, you can come up with a different solution:
+
 ## Hashtable
 
 - Save seen elements in the **set**
@@ -71,12 +87,28 @@ This approach is taking us
 - `O(n)` time
 - `O(n)` space for set
 
+### Why it's working
+
+We have considered all possibilities.
+ Assuming there are two elements in the pair,
+  we consider each second element while iterating on the array,
+   and every first element while looking in the set.
+
+
+### Benefits
+Intuitive and easy to understand.
+O(n) time is as good as it gets.
+
+### Downside
+O(n) storage with the hash table.
+
+Last approach is especially beneficial, if the array is already sorted / we want to save some space and still be quick.
 
 ## Sorting and two pointers
 
 ### Description
 
-- Sort the array
+- Sort the array - O(n log n) time
 - Consider the pair of elements on the **left** and **right**
 - If pair sum is equal to target, return result
 - If the pair **sum is smaller, increase it** by considering next element on the left
@@ -106,7 +138,7 @@ This approach is taking us
 ### Time and Space Complexity
 
 This approach is taking us
-- `O(n log n)` time
+- `O(n log n)` time = O(n) for search and O(n log n) for sort
 - `O(n)` space - depending on the sort
 
 ### Why it's working
@@ -124,7 +156,6 @@ Let's imagine the pairs on 2D plane.
 - On the **horisontal** is index of the *start element*.
 - On the **vertical** is index of the *end element*.
 
-
 <Image
       src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750001440/Algorithms%20Book/Two_pointers_on_two_sum_xeebxn.png"
       width={700}
@@ -133,9 +164,7 @@ Let's imagine the pairs on 2D plane.
 />
 
 - We should only consider the pair under the diaganal, because our `start < end`.
-
 - We also don't consider any pairs on the diaganal, cause `start != end`.
-
 
 We start with `start = 0` and `end = n - 1`
 
@@ -152,8 +181,6 @@ Knowing that the sum of start and end bigger than the target,
  `(1, n - 1)`, `(2, n - 1)`, `(3, n - 1)` and so on. 
  
  Everything to the right of current element.
-
-
 
 <Image
       src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750002121/Algorithms%20Book/Two_pointers_on_two_sum_1_ma5fga.png"
@@ -177,15 +204,12 @@ This way we actually consider full 2D plane of the elements, eliminating *not on
 -  all pairs like `(start + x, end)` to the right if the pair is **bigger than target**
 -  all pairs like `(start, end - x)` on top if the pair is **smaller than target**
 
-
-
 <Image
       src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750000819/Algorithms%20Book/two_pointers_shesyn.gif"
       width={700}
       height={700}
       alt="How two pointer method works"
 />
-
 
 ### Benefits
 
@@ -195,4 +219,17 @@ We use relatively small space - just for sorting. In some sorting algoritms, lik
 ### Downside
 
 We might need to copy array in order to sort it, if the user doesn't expect the array to be changed.
+When the space complexity rises to O(n)
+
+## Conclusion
+In the moment of the interview it's great to mention at least one alternative and compare your solution to it.
+Usually the easiest one to come up with is brute force approach.
+If you have stuck with ideas, you can start with simplest solution, 
+and then observe it's patterns to see what you can optimize.
+
+If you already know an optimal solution, still mention a different one, even if it's brute force.
+It shows the interviewer that you are considering options and capable
+ of comparing them to make the best choice which gives you extra point as a candidate.
+
+Remember, it not only about *if you solve the problem*, it's *how you would* solve it.
 
