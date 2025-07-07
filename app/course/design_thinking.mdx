@@ -4,24 +4,30 @@ import Image from 'next/image'
 # Design mindset
 
 Often there is more than 1 solution to any problem.
+ Knowing and weighting the pros and cons of each of the solutions
+  is a sign that you have given serious thought about the problem and
+   know how to choose the best one given any constraints.
+    This is a valuable skill that can be leveraged to impress
+     your interviewer during an interview.
 
-How should you behave in the interview? 
-
-A lot of interviees believe that you should spill out the most optimized solution you know,
- as fast as possible.
+A lot of interviees believe that you should spit out the most optimized solution you know,
+ as fast as possible. But it can also be a sign that you've simply memorized a bunch of solutions.
+ Interviewer wants to see you *think*.
  But there is a superior appoarch, which shows your fluency in Computer Science.
 
 - Show that you see multiple solutions to this problem.
 - Compare this solutions between each other.
 - Select the one you choose and argument why.
 
-Let's take a look into a famous [2-sum problem](https://en.wikipedia.org/wiki/Subset_sum_problem).
+Let's take a look into the famous [2-sum problem](https://en.wikipedia.org/wiki/Subset_sum_problem).
 
 > Having an array of integers, return any`2`elements that **sum** to a given number called`target`.
 
-The easiest solution you can come up with is *brute force*.
+Let's consider a few solutions in order to compare them.
 
 ## Brute force
+
+The easiest solution you can come up with is *brute force*.
 
 ### Description
 - Consider all the pairs of numbers in the array
@@ -43,12 +49,12 @@ The easiest solution you can come up with is *brute force*.
 ### Time and Space Complexity
 
 This approach is taking us
-- `O(n²)` time
-- `O(1)` space
+- `O(n²)` time because we have two loops iterating over an array
+- `O(1)` space - we didn't use anything extra
 
-### Why it's working
+### Why it works
 
-We have considered all possibilities. If solution is there, we had considered it.
+This algorithm explicitly checks every single pair of numbers, so if there's a solution exists, it will be found.
 
 ### Benefits
 
@@ -58,14 +64,15 @@ It is simple to understand, it doesn't require additional space.
 
 Running time is pretty slow.
 
-> Should you mention it in the interview? Yes you should! No need to go in the details, just summarize the approach and the time and space complexity.
- Most likely interviewer would ask if there is a better approach, but seeing the brute force sets you up on the good foot.
+> Should you mention it in the interview? Yes you should! No need to go into details, just summarize the approach and the time and space complexity.
+ Most likely interviewer would ask if there is a better approach, but seeing the brute force gets you off on the right foot.
 
-If you think of using some extra storage, you can come up with a different solution:
+The previous algorithm solves the problem but it is slow because of the presence of a double loop which makes its time complexity be O(n^2).
+However, you can think of a faster solution if you're willing to use a larger amount of memory:
 
 ## Hashtable
 
-- Save seen elements in the **set**
+- Save seen elements in the **set** because they could sum up to some future elements to form the target
 - For a new element considered, see if it's **complementary** is already in the set
 - If it is, we have found the pair 🎉
 - If not, we will **put current element in the set**
@@ -84,10 +91,10 @@ If you think of using some extra storage, you can come up with a different solut
 }
 </Code>
 This approach is taking us
-- `O(n)` time
-- `O(n)` space for set
+- `O(n)` time - we went through the array exactly once
+- `O(n)` space for set which has no more elements, when the array
 
-### Why it's working
+### Why it works
 
 We have considered all possibilities.
  Assuming there are two elements in the pair,
@@ -102,13 +109,16 @@ O(n) time is as good as it gets.
 ### Downside
 O(n) storage with the hash table.
 
-Last approach is especially beneficial, if the array is already sorted / we want to save some space and still be quick.
+The last approach is especially beneficial, if the array is already sorted / we want to save some space and still be quick.
 
-## Sorting and two pointers
+## Two pointers (if the array is sorted)
+
+This can be portrayed as THE most efficient approach if we know that the array is already sorted.
+And it's also still an interesting and efficient approach if the array is not sorted:
+just slightly worse than the hash table but much better than brute force.
 
 ### Description
 
-- Sort the array - O(n log n) time
 - Consider the pair of elements on the **left** and **right**
 - If pair sum is equal to target, return result
 - If the pair **sum is smaller, increase it** by considering next element on the left
@@ -135,17 +145,24 @@ Last approach is especially beneficial, if the array is already sorted / we want
 }
 </Code>
 
-### Time and Space Complexity
+### Time and Space Complexity for sorted array
 
-This approach is taking us
+- `O(n)` time for the search
+- `O(1)` space
+
+Really well! But what if array is not sorted?
+
+### Time and Space Complexity in general
+
 - `O(n log n)` time = O(n) for search and O(n log n) for sort
 - `O(n)` space - depending on the sort
 
-### Why it's working
+### Why it works
 
-Though it's intuitive, it might not easy to see why some pairs could not be lost this way.
-
-Could we actually find the solution, without considering all the pairs??
+Though it's simple, it might not easy to see why some pairs could not be lost this way.
+This algorithm will at most compare 2n numbers,
+so how can we guarantee that we know a solution is found at all
+ if there are n*(n-1)/2 pairs?
 
 Actually, **we ARE considering all the pairs**.
 We just NOT considering them individually.
@@ -163,8 +180,8 @@ Let's imagine the pairs on 2D plane.
       alt="How two pointer method works"
 />
 
-- We should only consider the pair under the diaganal, because our `start < end`.
-- We also don't consider any pairs on the diaganal, cause `start != end`.
+- We should only consider the pair under the diagonal, because our `start < end`.
+- We also don't consider any pairs on the diagonal, cause `start != end`. If `start == end` it's not really a pair, it's the same element!
 
 We start with `start = 0` and `end = n - 1`
 
@@ -176,11 +193,11 @@ We start with `start = 0` and `end = n - 1`
       alt="How two pointer method works"
 />
 
-Knowing that the sum of start and end bigger than the target,
+Knowing that the sum of `start` and `end` bigger than the `target`,
  eliminates not only pairs `(0, n - 1)` but also all the pairs where `start > 0`:
  `(1, n - 1)`, `(2, n - 1)`, `(3, n - 1)` and so on. 
  
- Everything to the right of current element.
+Visually, this corresponds to disregarding everything to the right of the current pair.
 
 <Image
       src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750002121/Algorithms%20Book/Two_pointers_on_two_sum_1_ma5fga.png"
@@ -218,8 +235,12 @@ We use relatively small space - just for sorting. In some sorting algoritms, lik
 
 ### Downside
 
-We might need to copy array in order to sort it, if the user doesn't expect the array to be changed.
-When the space complexity rises to O(n)
+To sort the array, we have two options:
+ modify it in place or copy and sort. 
+ The first option may not use additional space if the correct 
+ sorting algorithm is used but has the possibly-unintended side 
+ effect of modifying the input array. The second option is
+  to copy the array and then sort, which requires additional `O(n)` memory.
 
 ## Conclusion
 In the moment of the interview it's great to mention at least one alternative and compare your solution to it.
