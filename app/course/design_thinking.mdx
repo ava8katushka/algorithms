@@ -10,13 +10,13 @@ Often there is more than 1 solution to any problem.
     This is a valuable skill that can be leveraged to impress
      your interviewer during an interview.
 
-A lot of interviees believe that you should spit out the most optimized solution you know,
+A lot of interviewees believe that you should spit out the most optimized solution you know,
  as fast as possible. But it can also be a sign that you've simply memorized a bunch of solutions.
- Interviewer wants to see you *think*.
- But there is a superior appoarch, which shows your fluency in Computer Science.
+The interviewer wants to see you *think*.
+ But there is a superior approach, which shows your fluency in Computer Science.
 
 - Show that you see multiple solutions to this problem.
-- Compare this solutions between each other.
+- Compare the solutions with one another.
 - Select the one you choose and argument why.
 
 Let's take a look into the famous [2-sum problem](https://en.wikipedia.org/wiki/Subset_sum_problem).
@@ -73,7 +73,7 @@ However, you can think of a faster solution if you're willing to use a larger am
 ## Hashtable
 
 - Save seen elements in the **set** because they could sum up to some future elements to form the target
-- For a new element considered, see if it's **complementary** is already in the set
+- For a new element considered, see if its **complementary** is already in the set
 - If it is, we have found the pair 🎉
 - If not, we will **put current element in the set**
 
@@ -92,7 +92,7 @@ However, you can think of a faster solution if you're willing to use a larger am
 </Code>
 This approach is taking us
 - `O(n)` time - we went through the array exactly once
-- `O(n)` space for set which has no more elements, when the array
+- `O(n)` space for set which has no more elements, then the array
 
 ### Why it works
 
@@ -122,7 +122,7 @@ just slightly worse than the hash table but much better than brute force.
 - Consider the pair of elements on the **left** and **right**
 - If pair sum is equal to target, return result
 - If the pair **sum is smaller, increase it** by considering next element on the left
-- If the pair **sum is bigger, decrease it** by considering next element on the right
+- If the pair **sum is bigger, decrease it** by considering next element from the right
 
 ### Code 
 
@@ -170,8 +170,8 @@ We are smartly eliminating the pairs that would not fit.
 
 Let's imagine the pairs on 2D plane.
 
-- On the **horisontal** is index of the *start element*.
-- On the **vertical** is index of the *end element*.
+- On the **horisontal** is the index of the *start element*.
+- On the **vertical** is the index of the *end element*.
 
 <Image
       src="https://res.cloudinary.com/ava-coding-com/image/upload/v1750001440/Algorithms%20Book/Two_pointers_on_two_sum_xeebxn.png"
