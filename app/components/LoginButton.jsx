@@ -24,26 +24,6 @@ export default function LoginButton() {
               </div>
 
           </div>
-      //<button class="subtitle is-6 has-text-white" onClick={() => signOut()}>{session.user.name}</button>
-
-      // <div class="card">
-      //     <div class="card-content">
-      //       <div class="media">
-      //         <div class="media-left">
-      //           <figure class="image is-32x32">
-      //                   <img
-      //                     src={session.user.image}
-      //                     alt={session.user.name}
-      //                   />
-      //           </figure>
-      //         </div>
-      //         <div class="media-content">
-      //           <p class="title is-6">{session.user.name}</p>
-      //            <button class="subtitle is-6" onClick={() => signOut()}>Sign out</button>
-      //         </div>
-      // </div>
-      // </div>
-      // </div>
     );
   }
   return (
