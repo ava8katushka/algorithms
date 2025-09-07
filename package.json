@@ -19,6 +19,7 @@
     "@next/mdx": "^14.2.23",
     "@types/mdx": "^2.0.13",
     "@types/react-router-dom": "^5.3.3",
+    "@vercel/analytics": "^1.5.0",
     "bulma": "^1.0.1",
     "next": "^14.2.3",
     "next-auth": "^4.24.11",

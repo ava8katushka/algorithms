@@ -6,6 +6,7 @@ import { config, library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { Providers } from "./providers"
+import { Analytics } from '@vercel/analytics/next';
 config.autoAddCss = false;
 library.add(fas, fab);
 
@@ -17,13 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Analytics />
         <Providers>
         <Navigation />
         <div className="hero">
           <div className="hero-body">
-          
             {children}
-     
             </div>
         </div>
         <Footer />
