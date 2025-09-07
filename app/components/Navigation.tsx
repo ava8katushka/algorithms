@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import LoginButton from "./LoginButton"
 
 const Navbar = () => (
   <>
@@ -25,6 +26,7 @@ const Navbar = () => (
                 </span>
               </span>
             </a>
+            <LoginButton/>
           </div>
         </div>
       </div>
